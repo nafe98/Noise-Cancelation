@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<style>
+	#myContainer{
+		zoom: 0.9;
+	}
+</style>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/customselect.css"/>
+<link rel="stylesheet" href="css/icons/allicons.css"/>
+
+
+	<title>Template 1a</title>
+	<script>
+var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+
+if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+
+function mischandler(){ 
+return false;
+}
+
+function mousehandler(e){
+var myevent = (isNS) ? e : event;
+var eventbutton = (isNS) ? myevent.which : myevent.button;
+if((eventbutton==2)||(eventbutton==3)) return false;
+}
+document.oncontextmenu = mischandler;
+document.onmousedown = mousehandler;
+document.onmouseup = mousehandler;
+
+
+</script>
+</head>
+<body scroll="yes">
+	<div class='center' id="myContainer">
+			<img src="graphics/Autopod Multicam Logo.png" alt="Autopod Multicam Logo" width="250">
+		<a id="LogoutButton" style="position:relative;top:-36px">Logout</a>
+		<br>
+		<p class='white-text-med'>Saved Layouts:</p>
+		<div id="PresetContainer"></div>
+
+	<br>
+	<p class='white-text-med'>Layout Info:</p>
+	<div style="padding-right:12%">
+	<div style="display: flex; justify-content: flex-end;">
+	<div class="select">
+		<span class="selectLabel">Cutting Method</span>
+		<div class="selectWrapper">
+		  <div id="EditingSelection" class="selectCustom js-selectCustom">
+			<div class="selectCustom-trigger" datavalue="1" id="EditingMethod">Standard</div>
+			<div class="selectCustom-options">
+			  <div class="selectCustom-option" datavalue="1">Standard</div>
+			  <div class="selectCustom-option" datavalue="2">Enable/Disable</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div style="justify-content: center;">
+	<div style="display: flex; justify-content: flex-end;">
+	<div class="select">
+		<span class="selectLabel">Multi-Shot Frequency</span>
+		<div class="selectWrapper">
+		  <div id="MultiShotSelection" class="selectCustom js-selectCustom">
+			<div class="selectCustom-trigger" datavalue="2" id="MultiShotSetting">Medium</div>
+			<div class="selectCustom-options">
+			  <div class="selectCustom-option" datavalue="1">Low</div>
+			  <div class="selectCustom-option" datavalue="2">Medium</div>
+			<div class="selectCustom-option" datavalue="3">High</div>
+
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+
+	<div style="display: flex; justify-content: flex-end;">
+	<div class="select">
+		<span class="selectLabel">Speaker #</span>
+		<div class="selectWrapper">
+		  <div id="SpeakerSelection" class="selectCustom js-selectCustom">
+			<div class="selectCustom-trigger" datavalue="2" id="speakernumber">2 Speakers</div>
+			<div class="selectCustom-options">
+			  <div class="selectCustom-option" datavalue="2">2 Speakers</div>
+			  <div class="selectCustom-option" datavalue="3">3 Speakers</div>
+			  <div class="selectCustom-option" datavalue="4">4 Speakers</div>
+			  <div class="selectCustom-option" datavalue="5">5 Speakers</div>
+			  <div class="selectCustom-option" datavalue="6">6 Speakers</div>
+			  <div class="selectCustom-option" datavalue="7">7 Speakers</div>
+			  <div class="selectCustom-option" datavalue="8">8 Speakers</div>
+			  <div class="selectCustom-option" datavalue="9">9 Speakers</div>
+			  <div class="selectCustom-option" datavalue="10">10 Speakers</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  
+	<div style="display: flex; justify-content: flex-end;">
+	<div class="select">
+		<span class="selectLabel">Camera #</span>
+		<div class="selectWrapper">
+		  <div id="CameraSelection" class="selectCustom js-selectCustom">
+			<div class="selectCustom-trigger" datavalue="2" id="cameranumber">2 Cameras</div>
+			<div class="selectCustom-options">
+			  <div class="selectCustom-option" datavalue="2">2 Cameras</div>
+			  <div class="selectCustom-option" datavalue="3">3 Cameras</div>
+			  <div class="selectCustom-option" datavalue="4">4 Cameras</div>
+			  <div class="selectCustom-option" datavalue="5">5 Cameras</div>
+			  <div class="selectCustom-option" datavalue="6">6 Cameras</div>
+			  <div class="selectCustom-option" datavalue="7">7 Cameras</div>
+			  <div class="selectCustom-option" datavalue="8">8 Cameras</div>
+			  <div class="selectCustom-option" datavalue="9">9 Cameras</div>
+			  <div class="selectCustom-option" datavalue="10">10 Cameras</div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+</div>
+<br>
+
+<p class='white-text-med'>Speaker Names:</p>
+<div id="SpeakerInputDiv" class='center'></div>
+<br>
+<p class='white-text-med'>Tag Speakers:</p>
+<div id="CameraInputsDiv" class='center'></div>
+
+	<p class='white-text-med'>Create Edit</p>
+	<button type="button" id="createCamCuts"><i class="gg-play-button-o"></i>Create Multi-Cam Edit</button>
+
+	<div id="ProgressBarDiv" style="margin-top:6px">
+	</div>
+
+	<br>
+
+</div>
+
+	<script>
+
+
+function getOS() {
+ 		var userAgent = window.navigator.userAgent,
+ 		platform = window.navigator.platform,
+ 		macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+ 		windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+ 		os = null;
+
+ 		if(macosPlatforms.indexOf(platform) != -1) {
+ 			os = "MAC";
+ 		} else if(windowsPlatforms.indexOf(platform) != -1) {
+ 			os = "WIN";
+ 		}
+ 		return os;
+ 	}
+	
+	</script>	
+	<script src="js/libs/CSInterface.js"></script>
+	<script src="js/customselect.js"></script>
+	<script src="js/function.js"></script>
+</body>
+</html>
+
+

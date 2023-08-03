@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css"/>
+<title>Template 1a</title>
+	<script>
+var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+
+if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+
+function mischandler(){
+return false;
+}
+
+function mousehandler(e){
+var myevent = (isNS) ? e : event;
+var eventbutton = (isNS) ? myevent.which : myevent.button;
+if((eventbutton==2)||(eventbutton==3)) return false;
+}
+document.oncontextmenu = mischandler;
+document.onmousedown = mousehandler;
+document.onmouseup = mousehandler;
+
+
+</script>
+</head>
+<body scroll="yes">
+
+	<div class='center' id="myContainer">
+		<img src="graphics/Autopod Multicam Logo.png" alt="Autopod Multicam Logo" width="250">
+		<br>
+		<input id="EmailInput" type='text' placeholder = 'Email' style="width: 150px;margin-top:2px"></input>
+		<br>
+		<input id="KeyInput" type='text' placeholder = 'Key' style="width: 150px;margin-top:2px"></input>
+		<br>
+		<button type="button" id="LoginButton">Login</button>
+		<br>
+	</div>
+
+<div id="previewSection">
+	
+
+
+</div>
+	<script>
+
+function getOS() {
+ 		var userAgent = window.navigator.userAgent,
+ 		platform = window.navigator.platform,
+ 		macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+ 		windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+ 		os = null;
+
+ 		if(macosPlatforms.indexOf(platform) != -1) {
+ 			os = "MAC";
+ 		} else if(windowsPlatforms.indexOf(platform) != -1) {
+ 			os = "WIN";
+ 		}
+ 		return os;
+ 	}
+	
+	</script>	
+	<script src="js/libs/CSInterface.js"></script>
+	<script src="js/login.js"></script>
+</body>
+</html>

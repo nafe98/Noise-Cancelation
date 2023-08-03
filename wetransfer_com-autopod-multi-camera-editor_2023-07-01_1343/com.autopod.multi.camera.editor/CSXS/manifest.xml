@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest
+	Version="5.0"
+	ExtensionBundleId="com.autopod.multi.camera.editor"
+	ExtensionBundleVersion="0.0.4"
+	ExtensionBundleName="AutoPod Multi-Camera Editor"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<ExtensionList>
+		<Extension Id="com.autopod.multi.camera.editor" Version="1.0" />
+	</ExtensionList>
+
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="PPRO" Version="15.4"/>
+		</HostList>
+
+	<LocaleList>
+		<Locale Code="All" />
+	</LocaleList>
+
+	<RequiredRuntimeList>
+		<RequiredRuntime Name="CSXS" Version="5.0" />
+	</RequiredRuntimeList>
+</ExecutionEnvironment>
+
+	<DispatchInfoList>
+		<Extension Id="com.autopod.multi.camera.editor">
+			<DispatchInfo>
+
+			<Resources>
+				<MainPath>./login.html</MainPath>
+				<ScriptPath>./jsx/premiere.jsx</ScriptPath>
+
+				<CEFCommandLine>
+				<Parameter>--enable-nodejs</Parameter>
+				<Parameter>--mixed-context</Parameter>
+				</CEFCommandLine>
+			</Resources>
+
+			<Lifecycle>
+				<AutoVisible>true</AutoVisible>
+			</Lifecycle>
+
+			<UI>
+
+				<Type>Panel</Type>
+				<Menu>AutoPod Multi-Camera Editor</Menu>
+
+				<Geometry>
+					<Size>
+						<Height>580</Height>
+						<Width>400</Width>
+					</Size>
+				
+					
+				</Geometry>
+
+			</UI>
+		</DispatchInfo>
+	</Extension>
+</DispatchInfoList>
+</ExtensionManifest>
